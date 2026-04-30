@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relatórios - T-rix</title>
+    <link rel="stylesheet" href="pico.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container-geral">
+        <header>
+            <div class="caixa-logo">
+                <a href="menu.html">
+                    <img src="Logo T-rix.png" alt="T-rix" width="120">
+                </a>
+            </div>
+            
+            <div class="caixa-menu">
+                <ul>
+                    <li><a href="menu.html">Início</a></li>
+                    <li><a href="triagem.html">Nova Triagem</a></li>
+                    <li><a href="relatorios.html" class="link-ativo">Relatórios</a></li>
+                    <li><a href="cadastro_usuario.html">Usuários</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+            <div class="limpar-float"></div>
+        </header>
+
+        <div class="centralizar-texto">
+            <h2>Relatórios de Triagem</h2>
+            <p style="color: #8779ec; margin-bottom: 30px;">Consulte o histórico de avaliações realizadas.</p>
+
+            <div class="meu-formulario">
+                <form action="#">
+                    <h3>Filtro</h3>
+                    <label>Filtrar por data
+                        <input type="text" name="data" placeholder="DD/MM/AAAA" autocomplete="off">
+                    </label>
+                    <button type="button" style="margin-top: 20px;">Buscar</button>
+                </form>
+            </div>
+
+            <table style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Paciente</th>
+                        <th>Sexo</th>
+                        <th>Score</th>
+                        <th>Recomendação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>10/04/2026</td>
+                        <td>João Silva</td>
+                        <td>M</td>
+                        <td>0.85</td>
+                        <td><span class="texto-vermelho">Sim (Acima do limiar)</span></td>
+                        <td><a href="#">Imprimir</a> · <a href="#">Editar</a></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>11/04/2026</td>
+                        <td>Maria Souza</td>
+                        <td>F</td>
+                        <td>0.30</td>
+                        <td>Não (Abaixo do limiar)</td>
+                        <td><a href="#">Imprimir</a> · <a href="#">Editar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

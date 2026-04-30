@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar Usuário - T-rix</title>
+    <link rel="stylesheet" href="pico.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container-geral">
+        <header>
+            <div class="caixa-logo">
+                <a href="menu.html">
+                    <img src="Logo T-rix.png" alt="T-rix" width="120">
+                </a>
+            </div>
+            
+            <div class="caixa-menu">
+                <ul>
+                    <li><a href="menu.html">Início</a></li>
+                    <li><a href="triagem.html">Nova Triagem</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="cadastro_usuario.html" class="link-ativo">Usuários</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+            <div class="limpar-float"></div>
+        </header>
+
+        <div class="centralizar-texto">
+            <h2>Cadastro de Novo Usuário</h2>
+            <p style="color: #8779ec; margin-bottom: 30px;">Área restrita ao Administrador do sistema.</p>
+
+            <div class="meu-formulario">
+                <form action="#">
+                    <h3>Dados do Novo Usuário</h3>
+
+                    <label for="novo_usuario">Nome de Usuário</label>
+                    <input type="text" id="novo_usuario" name="novo_usuario" required placeholder="Ex: dr.silva">
+
+                    <label for="novo_email">E-mail</label>
+                    <input type="email" id="novo_email" name="novo_email" required autocomplete="email" placeholder="email@exemplo.com">
+
+                    <label for="nova_senha">Senha</label>
+                    <input type="password" id="nova_senha" name="nova_senha" required autocomplete="new-password" placeholder="••••••••">
+
+                    <label for="perfil">Perfil de Acesso</label>
+                    <select id="perfil" name="perfil" required>
+                        <option value="">Selecione…</option>
+                        <option value="medico">Médico</option>
+                        <option value="enfermeiro">Enfermeiro</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+
+                    <button type="button" style="margin-top: 20px;">Cadastrar Usuário</button>
+                </form>
+            </div>
+
+            <hr style="margin-top: 30px; margin-bottom: 30px;">
+            <a href="lista_usuarios.html">Ver Usuários Cadastrados</a>
+        </div>
+    </div>
+
+</body>
+</html>

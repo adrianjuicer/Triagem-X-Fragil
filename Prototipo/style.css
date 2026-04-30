@@ -1,0 +1,79 @@
+/* =========================================
+   T-RIX SYSTEM - CSS BÁSICO (VERSÃO HEADER)
+   ========================================= */
+
+/* 1. CORES FIXAS (HARDCODED) */
+button, [type="submit"], [type="button"] {
+  background-color: #3129d6 !important;
+  border-color: #3129d6 !important;
+  color: #ffffff !important;
+}
+
+button:hover {
+  background-color: #2821ab !important;
+}
+
+/* 2. ESTRUTURA DO HEADER E NAVEGAÇÃO (FLOATS) */
+header {
+  border-bottom: 2px solid #adadeb;
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+
+.caixa-logo {
+  float: left;
+}
+
+.caixa-menu {
+  float: right;
+  margin-top: 10px;
+}
+
+.caixa-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.caixa-menu li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.caixa-menu a {
+  color: #8779ec;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-ativo {
+  color: #3129d6 !important;
+  text-decoration: underline !important;
+}
+
+.limpar-float {
+  clear: both;
+}
+
+/* 3. LAYOUT DO FORMULÁRIO E TEXTOS */
+.container-geral {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.centralizar-texto {
+  text-align: center;
+}
+
+.meu-formulario {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.texto-vermelho {
+  color: #ef4444;
+  font-weight: bold;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nova Triagem - T-rix</title>
+    <link rel="stylesheet" href="pico.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container-geral">
+        <header>
+            <div class="caixa-logo">
+                <a href="menu.html">
+                    <img src="Logo T-rix.png" alt="T-rix" width="120">
+                </a>
+            </div>
+            
+            <div class="caixa-menu">
+                <ul>
+                    <li><a href="menu.html">Início</a></li>
+                    <li><a href="triagem.html" class="link-ativo">Nova Triagem</a></li>
+                    <li><a href="relatorios.html">Relatórios</a></li>
+                    <li><a href="cadastro_usuario.html">Usuários</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </div>
+            <div class="limpar-float"></div>
+        </header>
+
+        <div class="centralizar-texto">
+            <h2>Cadastro de Paciente e Avaliação Clínica</h2>
+            <p style="color: #8779ec; margin-bottom: 30px;">Preencha os dados e marque os sintomas observados.</p>
+
+            <div class="meu-formulario">
+                <form action="#">
+                    <h3>Dados do Paciente</h3>
+
+                    <label>Nome do Paciente
+                        <input type="text" name="nome" required placeholder="Nome completo">
+                    </label>
+
+                    <label>Idade
+                        <input type="number" name="idade" required placeholder="Ex: 5">
+                    </label>
+
+                    <label>Sexo Biológico
+                        <select name="sexo" required>
+                            <option value="">Selecione…</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </label>
+
+                    <br>
+                    <h3>Checklist de Sintomas</h3>
+                    <p style="color: #8779ec;">Marque os sintomas observados no paciente.</p>
+
+                    <label>
+                        <input type="checkbox" name="s1"> Atraso no desenvolvimento
+                    </label>
+                    <label>
+                        <input type="checkbox" name="s2"> Traços de autismo
+                    </label>
+                    <label>
+                        <input type="checkbox" name="s3"> Orelhas proeminentes
+                    </label>
+
+                    <button type="button" style="margin-top: 20px;">Calcular Score e Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
