@@ -1,0 +1,239 @@
+/* =========================================
+   TRIX - ajustes visuais do protótipo Flask
+   ========================================= */
+
+:root {
+  --trix-primaria: #0f766e;
+  --trix-primaria-escura: #0b5f59;
+  --trix-destaque: #0f4c5c;
+  --trix-borda: #c8ddd7;
+  --trix-alerta: #b42318;
+  --trix-sucesso: #146c43;
+}
+
+button,
+[type="submit"],
+[type="button"],
+[role="button"] {
+  background-color: var(--trix-primaria);
+  border-color: var(--trix-primaria);
+  color: #ffffff;
+}
+
+button:hover,
+[role="button"]:hover {
+  background-color: var(--trix-primaria-escura);
+  border-color: var(--trix-primaria-escura);
+}
+
+.botao-secundario {
+  margin-left: 8px;
+  background-color: #5b5b72;
+  border-color: #5b5b72;
+}
+
+.container-geral {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+}
+
+.cabecalho-principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 2px solid var(--trix-borda);
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+
+.caixa-logo img {
+  display: block;
+}
+
+.caixa-menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.caixa-menu li {
+  list-style: none;
+}
+
+.caixa-menu a {
+  color: var(--trix-destaque);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-atual {
+  color: var(--trix-primaria) !important;
+  text-decoration: underline !important;
+}
+
+.centralizar-texto {
+  text-align: center;
+}
+
+.tela-login {
+  padding-top: 80px;
+}
+
+.meu-formulario {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.texto-destaque {
+  color: var(--trix-destaque);
+  margin-bottom: 30px;
+}
+
+.texto-vermelho {
+  color: var(--trix-alerta);
+  font-weight: bold;
+}
+
+.texto-sucesso {
+  color: var(--trix-sucesso);
+  font-weight: bold;
+}
+
+.botao-espacado,
+.espaco-superior {
+  margin-top: 20px;
+}
+
+.grade-acoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tabela-responsiva {
+  overflow-x: auto;
+  margin-top: 30px;
+}
+
+article,
+.meu-formulario {
+  box-shadow: none;
+}
+
+article {
+  border: 1px solid var(--trix-borda);
+  border-radius: 8px;
+}
+
+.painel-filtros {
+  border-top: 1px solid var(--trix-borda);
+  border-bottom: 1px solid var(--trix-borda);
+  margin-top: 28px;
+  padding: 18px 0;
+}
+
+.grupo-filtros {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  gap: 14px;
+  align-items: end;
+}
+
+.grupo-filtros label {
+  margin-bottom: 0;
+}
+
+.grupo-filtros input,
+.grupo-filtros select {
+  min-height: 44px;
+}
+
+.barra-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.contador-resultados {
+  margin: 0;
+  color: #45455c;
+  font-weight: bold;
+}
+
+.linha-avaliacao[hidden],
+#linha_sem_resultados[hidden] {
+  display: none;
+}
+
+.lista-sintomas label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.lista-sintomas-tabela {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.lista-sintomas-tabela li {
+  margin-bottom: 4px;
+}
+
+.formulario-inline {
+  display: inline;
+}
+
+.botao-link {
+  display: inline;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--trix-primaria);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.botao-link:hover {
+  background: transparent;
+  color: var(--trix-primaria-escura);
+}
+
+@media (max-width: 720px) {
+  .cabecalho-principal {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .caixa-menu ul,
+  .grade-acoes,
+  .grupo-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .caixa-menu ul {
+    gap: 10px;
+  }
+
+  .barra-filtros {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .botao-secundario {
+    margin-left: 0;
+  }
+}

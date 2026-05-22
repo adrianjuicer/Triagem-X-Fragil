@@ -1,0 +1,12 @@
+from models.dados_mockados import (
+    AVALIACOES_EXEMPLO,
+    SINTOMAS_DISPONIVEIS,
+    USUARIOS_CADASTRADOS,
+)
+
+
+__all__ = [
+    "AVALIACOES_EXEMPLO",
+    "SINTOMAS_DISPONIVEIS",
+    "USUARIOS_CADASTRADOS",
+]

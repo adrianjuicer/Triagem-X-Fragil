@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %}Usuários Cadastrados - TriX{% endblock %}
+
+{% block conteudo %}
+<section class="centralizar-texto">
+    <h2>Usuários Cadastrados</h2>
+    <p class="texto-destaque">Área administrativa para visualizar acessos do sistema.</p>
+
+    {% if mensagem_erro %}
+    <p class="texto-vermelho">{{ mensagem_erro }}</p>
+    {% endif %}
+
+    <div class="tabela-responsiva">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Login</th>
+                    <th>Perfil</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.login }}</td>
+                    <td>{{ usuario.perfil }}</td>
+                    <td>
+                        <form action="{{ url_for('principal.listar_usuarios') }}" method="get" class="formulario-inline">
+                            <button type="submit" class="botao-link">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Nenhum usuário cadastrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p class="espaco-superior">
+        <a href="{{ url_for('principal.exibir_cadastro_usuario') }}">Voltar para Cadastro</a>
+    </p>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block titulo %}Cadastrar Usuário - TriX{% endblock %}
+
+{% block conteudo %}
+<section class="centralizar-texto">
+    <h2>Cadastro de Novo Usuário</h2>
+    <p class="texto-destaque">Área administrativa para criar acessos do sistema.</p>
+
+    {% if mensagem_erro %}
+    <p class="texto-vermelho">{{ mensagem_erro }}</p>
+    {% endif %}
+
+    {% if mensagem_sucesso %}
+    <p class="texto-sucesso">{{ mensagem_sucesso }}</p>
+    {% endif %}
+
+    <article class="meu-formulario">
+        <form action="{{ url_for('principal.salvar_usuario') }}" method="post">
+            <h3>Dados do Novo Usuário</h3>
+
+            <label for="novo_usuario">Login</label>
+            <input type="text" id="novo_usuario" name="login" required placeholder="Ex: dr.silva">
+
+            <label for="nova_senha">Senha</label>
+            <input type="password" id="nova_senha" name="senha" required autocomplete="new-password" placeholder="********">
+
+            <label for="perfil">Perfil do Novo Usuário</label>
+            <select id="perfil" name="perfil" required>
+                <option value="">Selecione...</option>
+                <option value="medico">Profissional de Saúde</option>
+                <option value="administrador">Administrador</option>
+            </select>
+
+            <button type="submit" class="botao-espacado">Cadastrar Usuário</button>
+        </form>
+    </article>
+
+    <p class="espaco-superior">
+        <a href="{{ url_for('principal.listar_usuarios') }}">Ver Usuários Cadastrados</a>
+    </p>
+</section>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block titulo %}Nova Triagem - TriX{% endblock %}
+
+{% block conteudo %}
+<section class="centralizar-texto">
+    <h2>Cadastro de Paciente e Avaliação Clínica</h2>
+    <p class="texto-destaque">Preencha os dados essenciais e marque os sintomas observados.</p>
+
+    <article class="meu-formulario">
+        <form action="{{ url_for('principal.salvar_triagem') }}" method="post">
+            <h3>Dados do Paciente</h3>
+
+            <label>Nome do Paciente
+                <input type="text" name="nome" required placeholder="Nome completo">
+            </label>
+
+            <label>CPF do Paciente
+                <input type="text" name="cpf" required placeholder="Ex: 000.000.000-00">
+            </label>
+
+            <label>RG do Paciente
+                <input type="text" name="rg" placeholder="Ex: 00.000.000-0">
+            </label>
+
+            <label>Data de Nascimento
+                <input type="date" name="data_nascimento" required>
+            </label>
+
+            <label>Sexo
+                <select name="sexo" id="sexo_paciente" required>
+                    <option value="">Selecione...</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </label>
+
+            <h3>Dados da Avaliação</h3>
+
+            <label>Usuário Responsável
+                <select name="id_usuario" required>
+                    <option value="">Selecione...</option>
+                    {% for usuario in usuarios_cadastrados %}
+                    <option value="{{ usuario.id }}">{{ usuario.login }} ({{ usuario.perfil }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+
+            <label>Observações
+                <textarea name="observacoes" placeholder="Observações relevantes da avaliação"></textarea>
+            </label>
+
+            <h3>Checklist de Sintomas</h3>
+            <p class="texto-destaque">Marque os sintomas observados no paciente.</p>
+
+            <div class="lista-sintomas">
+                {% for sintoma in sintomas_disponiveis %}
+                <label {% if sintoma.descricao == "Macroorquidismo" %}data-apenas-masculino="sim"{% endif %}>
+                    <input type="checkbox" name="ids_sintomas_marcados" value="{{ sintoma.id }}">
+                    {{ sintoma.descricao }}
+                </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="botao-espacado">Calcular Score e Salvar</button>
+        </form>
+    </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/triagem.js') }}"></script>
+{% endblock %}
