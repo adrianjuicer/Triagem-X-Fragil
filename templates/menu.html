@@ -5,7 +5,7 @@
 {% block conteudo %}
 <section class="centralizar-texto">
     <h2>Bem-vindo ao Sistema de Triagem</h2>
-    {% if session.get("perfil_usuario") == "administrador" %}
+    {% if perfil_atual == "administrador" %}
     <p class="texto-destaque">Acesso de Administrador.</p>
     {% else %}
     <p class="texto-destaque">Acesso de Profissional de Saúde.</p>
@@ -15,24 +15,24 @@
         <article>
             <h3>Nova Triagem</h3>
             <p>Registrar uma avaliação clínica seguindo o formulário do protótipo.</p>
-            <a href="{{ url_for('principal.exibir_triagem') }}" role="button">Abrir</a>
+            <a href="{{ url_for('principal.exibir_triagem', perfil=perfil_atual) }}" role="button">Abrir</a>
         </article>
         <article>
             <h3>Relatórios</h3>
             <p>Consultar pacientes e histórico de avaliações por CPF.</p>
-            <a href="{{ url_for('principal.exibir_relatorios') }}" role="button">Abrir</a>
+            <a href="{{ url_for('principal.exibir_relatorios', perfil=perfil_atual) }}" role="button">Abrir</a>
         </article>
 
-        {% if session.get("perfil_usuario") == "administrador" %}
+        {% if perfil_atual == "administrador" %}
         <article>
             <h3>Cadastrar Usuário</h3>
             <p>Criar um novo acesso para administrador ou profissional de saúde.</p>
-            <a href="{{ url_for('principal.exibir_cadastro_usuario') }}" role="button">Abrir</a>
+            <a href="{{ url_for('principal.exibir_cadastro_usuario', perfil=perfil_atual) }}" role="button">Abrir</a>
         </article>
         <article>
             <h3>Usuários Cadastrados</h3>
             <p>Conferir os usuários cadastrados no sistema.</p>
-            <a href="{{ url_for('principal.listar_usuarios') }}" role="button">Abrir</a>
+            <a href="{{ url_for('principal.listar_usuarios', perfil=perfil_atual) }}" role="button">Abrir</a>
         </article>
         {% endif %}
     </div>

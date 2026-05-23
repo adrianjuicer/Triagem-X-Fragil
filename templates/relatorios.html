@@ -10,7 +10,7 @@
     </div>
 
     <article class="meu-formulario">
-        <form action="{{ url_for('principal.buscar_paciente') }}" method="post">
+        <form action="{{ url_for('principal.buscar_paciente', perfil=perfil_atual) }}" method="post">
             <label>Buscar Histórico por CPF
                 <input type="text" name="cpf" required placeholder="Ex: 000.000.000-00">
             </label>
@@ -101,9 +101,9 @@
                     <td>{{ avaliacao.score }}</td>
                     <td>{{ avaliacao.recomendacao }}</td>
                     <td>
-                        <a href="{{ url_for('principal.exibir_relatorios') }}">Histórico</a>
+                        <a href="{{ url_for('principal.exibir_relatorios', perfil=perfil_atual) }}">Histórico</a>
                         {% if "Recomendado" in avaliacao.recomendacao %}
-                        <a href="{{ url_for('principal.exibir_relatorios') }}">Gerar documento</a>
+                        <a href="{{ url_for('principal.exibir_relatorios', perfil=perfil_atual) }}">Gerar documento</a>
                         {% endif %}
                     </td>
                 </tr>

@@ -8,7 +8,7 @@
     <p class="texto-destaque">Preencha os dados essenciais e marque os sintomas observados.</p>
 
     <article class="meu-formulario">
-        <form action="{{ url_for('principal.salvar_triagem') }}" method="post">
+        <form action="{{ url_for('principal.salvar_triagem', perfil=perfil_atual) }}" method="post">
             <h3>Dados do Paciente</h3>
 
             <label>Nome do Paciente

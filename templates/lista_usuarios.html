@@ -29,6 +29,7 @@
                     <td>{{ usuario.perfil }}</td>
                     <td>
                         <form action="{{ url_for('principal.listar_usuarios') }}" method="get" class="formulario-inline">
+                            <input type="hidden" name="perfil" value="{{ perfil_atual }}">
                             <button type="submit" class="botao-link">Excluir</button>
                         </form>
                     </td>
@@ -41,9 +42,5 @@
             </tbody>
         </table>
     </div>
-
-    <p class="espaco-superior">
-        <a href="{{ url_for('principal.exibir_cadastro_usuario') }}">Voltar para Cadastro</a>
-    </p>
 </section>
 {% endblock %}

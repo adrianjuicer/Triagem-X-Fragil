@@ -3,12 +3,22 @@
    ========================================= */
 
 :root {
-  --trix-primaria: #0f766e;
-  --trix-primaria-escura: #0b5f59;
-  --trix-destaque: #0f4c5c;
-  --trix-borda: #c8ddd7;
+  --trix-primaria: #3129d6;
+  --trix-primaria-escura: #2821ab;
+  --trix-destaque: #8779ec;
+  --trix-borda: #adadeb;
   --trix-alerta: #b42318;
   --trix-sucesso: #146c43;
+  --trix-fundo-suave: #f7f6ff;
+}
+
+body.login-admin {
+  --trix-primaria: #b42318;
+  --trix-primaria-escura: #8f1d14;
+  --trix-destaque: #c2410c;
+  --trix-borda: #f1a6a0;
+  --trix-alerta: #7f1d1d;
+  --trix-fundo-suave: #fff5f5;
 }
 
 button,
