@@ -22,14 +22,16 @@ Para garantir a eficiência, responsividade e uma boa experiência de uso, o pro
 * **HTML5:** Estruturação semântica e acessível das páginas web.
 * **Pico CSS (v2.1.1):** Um framework CSS de código aberto minimalista, utilizado como biblioteca base do projeto e importado via tag `<link>` em cada página.
 * **CSS Customizado (`style.css`):** Construído sobre o Pico CSS para implementar as personalizações visuais exclusivas do nosso sistema. Ele é responsável por definir a paleta de cores da marca, inserção de logo, layout da navbar e a estilização detalhada dos botões.
-* **JavaScript:** Adição de interatividade, dinamismo e validações no lado do cliente.
+* **JavaScript:** Usado no front-end, junto às páginas HTML, para interatividade, validações e comportamentos da interface.
 
 ### ⚙️ Back-end e Banco de Dados
 * **Python:** Linguagem escolhida para o desenvolvimento da lógica de negócio e estruturação do back-end, visando eficiência e familiaridade da equipe.
-* **MySQL:** Sistema de Gerenciamento de Banco de Dados Relacional (SGBD) utilizado para armazenar de forma segura as informações de usuários, pacientes e históricos de avaliações.
+* **MySQL:** Banco de dados relacional utilizado para armazenar de forma segura as informações de usuários, pacientes e históricos de avaliações.
 
 ### 💻 Ferramentas de Desenvolvimento
 * **Visual Studio Code (VS Code):** Editor de código-fonte principal utilizado pela equipe.
+* **MySQL Workbench:** Gerenciador visual utilizado para modelar, administrar e consultar o banco de dados MySQL do projeto.
+* **Google Chrome:** Navegador utilizado para testar e validar as telas do sistema durante o desenvolvimento.
 
 ---
 
