@@ -1,0 +1,5 @@
+{% if texto %}
+  <p class="aviso {% if sucesso %}aviso-sucesso{% else %}aviso-erro{% endif %}">
+    {{ texto }}
+  </p>
+{% endif %}

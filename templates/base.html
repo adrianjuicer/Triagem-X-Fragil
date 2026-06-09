@@ -1,39 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block titulo %}TriX{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ titulo|default("TriX") }}</title>
+  <link rel="stylesheet" href="/static/css/pico.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block scripts %}{% endblock %}
 </head>
-<body class="{% if perfil_atual|default('medico') == 'administrador' %}login-admin{% endif %}">
-    <main class="container-geral">
-        {% if exibir_menu|default(True) %}
-        <header class="cabecalho-principal">
-            <div class="caixa-logo">
-                <a href="{{ url_for('principal.exibir_menu', perfil=perfil_atual|default('medico')) }}" aria-label="Voltar ao menu do TriX">
-                    <img src="{{ url_for('static', filename='img/logo-trix.png') }}" alt="TriX" width="120">
-                </a>
-            </div>
-
-            <nav class="caixa-menu" aria-label="Navegação principal">
-                <ul>
-                    <li><a href="{{ url_for('principal.exibir_menu', perfil=perfil_atual|default('medico')) }}" class="{% if pagina_ativa == 'menu' %}link-atual{% endif %}">Início</a></li>
-                    <li><a href="{{ url_for('principal.exibir_triagem', perfil=perfil_atual|default('medico')) }}" class="{% if pagina_ativa == 'triagem' %}link-atual{% endif %}">Nova Triagem</a></li>
-                    <li><a href="{{ url_for('principal.exibir_relatorios', perfil=perfil_atual|default('medico')) }}" class="{% if pagina_ativa == 'relatorios' %}link-atual{% endif %}">Relatórios</a></li>
-                    {% if perfil_atual|default('medico') == 'administrador' %}
-                    <li><a href="{{ url_for('principal.exibir_cadastro_usuario', perfil=perfil_atual|default('medico')) }}" class="{% if pagina_ativa == 'usuarios' %}link-atual{% endif %}">Cadastrar Usuário</a></li>
-                    <li><a href="{{ url_for('principal.listar_usuarios', perfil=perfil_atual|default('medico')) }}" class="{% if pagina_ativa == 'usuarios' %}link-atual{% endif %}">Usuários Cadastrados</a></li>
-                    {% endif %}
-                    <li><a href="{{ url_for('principal.sair_do_sistema') }}">Sair</a></li>
-                </ul>
-            </nav>
-        </header>
-        {% endif %}
-
-        {% block conteudo %}{% endblock %}
-    </main>
-    {% block scripts %}{% endblock %}
+<body{% if sessao is defined and sessao.perfil == "administrador" %} class="login-admin"{% endif %}>
+  {% if sessao is defined %}
+    {% include "_cabecalho.html" %}
+  {% endif %}
+  {% block conteudo %}{% endblock %}
 </body>
 </html>

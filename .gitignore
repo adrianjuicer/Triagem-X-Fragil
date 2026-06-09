@@ -1,0 +1,13 @@
+# Credenciais — NUNCA commitar
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+.venv/
+
+# Database
+database/*.db

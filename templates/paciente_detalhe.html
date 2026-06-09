@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% set titulo = "Histórico do Paciente - TriX" %}
+{% set p = registros[0] %}
+
+{% block conteudo %}
+<main class="container">
+  <div class="pagina-centrada">
+  <h1>Histórico do Paciente</h1>
+  <p>Responsável atual: {{ p.usuario }}</p>
+
+  <article class="formulario-card">
+    <h2>{{ p.paciente or "Paciente (identificação oculta)" }}</h2>
+    <div class="grid-formulario">
+      <p><strong>CPF:</strong> {{ p.cpf or "—" }}</p>
+      <p><strong>Data de nascimento:</strong> {{ p.data_nascimento or "—" }}</p>
+      <p><strong>Sexo:</strong> {{ p.sexo }}</p>
+      <p><strong>E-mail:</strong> {{ p.email or "—" }}</p>
+      <p><strong>Telefone:</strong> {{ p.telefone or "—" }}</p>
+    </div>
+
+    {% if sessao.perfil != "administrador" %}
+      <a role="button" href="/triagem?copiar_de={{ p.id }}">Nova triagem deste paciente</a>
+    {% endif %}
+  </article>
+
+  <h2>Avaliações</h2>
+  <figure>
+    <table role="grid">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Médico</th>
+          <th>Score</th>
+          <th>Recomendação</th>
+          <th>Sintomas</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for av in registros %}
+          <tr>
+            <td>{{ av.data }}</td>
+            <td>{{ av.usuario }}</td>
+            <td>{{ "%.2f"|format(av.score) }}</td>
+            <td>
+              {% if av.recomendada %}
+                <span class="badge badge-sucesso">Recomendado</span>
+              {% else %}
+                <span class="badge badge-neutro">Não recomendado</span>
+              {% endif %}
+            </td>
+            <td>
+              <ul>
+                {% for sintoma in av.sintomas %}
+                  <li>{{ sintoma }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td>
+              <div class="acoes-tabela">
+                <a class="botao-link" href="/triagem/{{ av.id }}/resultado">Ver resultado</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </figure>
+
+  <div class="acoes-linha">
+    <a role="button" class="botao-secundario" href="/relatorios">Voltar aos relatórios</a>
+  </div>
+  </div>
+</main>
+{% endblock %}

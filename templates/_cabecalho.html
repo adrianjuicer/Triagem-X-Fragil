@@ -1,0 +1,25 @@
+<header>
+  <div class="container">
+    <div class="cabecalho-topo">
+      <a class="marca" href="/menu">
+        <img src="/static/img/logo-trix.png" alt="TriX">
+      </a>
+      <div class="usuario-logado">
+        <span class="usuario-rotulo">Logado como</span>
+        <strong class="usuario-nome">{{ sessao.nome }}</strong>
+        <a class="usuario-sair" href="/sair">Sair</a>
+      </div>
+    </div>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a{% if pagina_atual == "/menu" %} class="link-atual"{% endif %} href="/menu">Início</a></li>
+        <li><a{% if pagina_atual == "/triagem" %} class="link-atual"{% endif %} href="/triagem">Nova Triagem</a></li>
+        <li><a{% if pagina_atual == "/relatorios" %} class="link-atual"{% endif %} href="/relatorios">Relatórios</a></li>
+        {% if sessao.perfil == "administrador" %}
+          <li><a{% if pagina_atual == "/usuarios/novo" %} class="link-atual"{% endif %} href="/usuarios/novo">Cadastrar Usuário</a></li>
+          <li><a{% if pagina_atual == "/usuarios" %} class="link-atual"{% endif %} href="/usuarios">Usuários</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>

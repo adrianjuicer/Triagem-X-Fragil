@@ -6,38 +6,173 @@
 
 ## 🎯 Sobre o Projeto
 
-O **Trix** (abreviação para *Triagem X*) tem como objetivo principal oferecer assistência técnica computacional e promover a conscientização sobre a **Síndrome do X Frágil (SXF)**, uma condição genética hereditária que afeta milhares de brasileiros. 
+O **Trix** (abreviação para *Triagem X*) tem como objetivo principal oferecer assistência técnica computacional e promover a conscientização sobre a **Síndrome do X Frágil (SXF)**, uma condição genética hereditária que afeta milhares de brasileiros.
 
 Através deste sistema web, buscamos otimizar e padronizar o processo de triagem clínica, auxiliando profissionais da saúde na identificação rápida de pacientes com potencial risco para a síndrome e no direcionamento adequado para testes genéticos.
+
+---
 
 ## 🎓 Contexto Acadêmico
 
 Este projeto foi idealizado e desenvolvido como parte integrante da disciplina de **Experiência Criativa: Criando Soluções Computacionais**, do curso de **Ciência da Computação** da **Pontifícia Universidade Católica do Paraná (PUCPR)**.
 
-## 🛠️ Tecnologias Utilizadas
+---
 
-Para garantir a eficiência, responsividade e uma boa experiência de uso, o projeto foi construído com as seguintes ferramentas:
+## 🎬 Vídeos
+
+| | Link |
+|---|---|
+| Tutorial da plataforma | [assistir no YouTube](https://www.youtube.com/watch?v=LINK_TUTORIAL) |
+| Implantação do sistema | [assistir no YouTube](https://www.youtube.com/watch?v=LINK_IMPLANTACAO) |
+
+---
+
+## 🛠️ Tecnologias Utilizadas
 
 ### 🎨 Front-end e UI Design
 * **HTML5:** Estruturação semântica e acessível das páginas web.
-* **Pico CSS (v2.1.1):** Um framework CSS de código aberto minimalista, utilizado como biblioteca base do projeto e importado via tag `<link>` em cada página.
-* **CSS Customizado (`style.css`):** Construído sobre o Pico CSS para implementar as personalizações visuais exclusivas do nosso sistema. Ele é responsável por definir a paleta de cores da marca, inserção de logo, layout da navbar e a estilização detalhada dos botões.
-* **JavaScript:** Usado no front-end, junto às páginas HTML, para interatividade, validações e comportamentos da interface.
+* **Pico CSS (v2.1.1):** Framework CSS minimalista, utilizado como biblioteca base e importado via tag `<link>` em cada página.
+* **CSS Customizado (`style.css`):** Construído sobre o Pico CSS para implementar personalizações visuais exclusivas — paleta de cores, logo, navbar e botões.
+* **JavaScript:** Utilizado para máscaras de input e exibição de erros de validação na interface.
 
 ### ⚙️ Back-end e Banco de Dados
-* **Python:** Linguagem escolhida para o desenvolvimento da lógica de negócio e estruturação do back-end, visando eficiência e familiaridade da equipe.
-* **MySQL:** Banco de dados relacional utilizado para armazenar de forma segura as informações de usuários, pacientes e históricos de avaliações.
+* **Python 3.10+:** Linguagem principal para a lógica de negócio e estruturação do back-end.
+* **FastAPI:** Framework web para construção das rotas e APIs.
+* **SQLAlchemy:** ORM utilizado como mapeador das tabelas do banco.
+* **Pydantic:** Validação de dados no back-end.
+* **MySQL 8.0+:** Banco de dados relacional para armazenar usuários, pacientes e históricos de avaliações.
 
 ### 💻 Ferramentas de Desenvolvimento
 * **Visual Studio Code (VS Code):** Editor de código-fonte principal utilizado pela equipe.
-* **MySQL Workbench:** Gerenciador visual utilizado para modelar, administrar e consultar o banco de dados MySQL do projeto.
-* **Google Chrome:** Navegador utilizado para testar e validar as telas do sistema durante o desenvolvimento.
+* **MySQL Workbench:** Gerenciador visual para modelar, administrar e consultar o banco de dados.
+* **Google Chrome:** Navegador utilizado para testar e validar o sistema (versão mais recente compatível).
+
+---
+
+## 📋 Requisitos do Sistema
+
+| Componente | Versão | Observação |
+|---|---|---|
+| Sistema Operacional | Windows 11 Pro 24H2 | Testado nesta versão |
+| Python | 3.10 ou superior | Testado com 3.14.3 |
+| MySQL | 8.0 ou superior | Deve estar rodando antes de iniciar |
+| Google Chrome | 149.0.7827.55 | Testado nesta versão |
+
+### Dependências Python
+
+Instaladas automaticamente via `pip install -r requirements.txt`.
+
+| Pacote | Versão |
+|---|---|
+| fastapi | >=0.111, <1.0 |
+| uvicorn | >=0.30, <1.0 |
+| sqlalchemy | >=2.0, <3.0 |
+| pydantic | >=2.7, <3.0 |
+| pymysql | >=1.1, <2.0 |
+| python-multipart | >=0.0.9, <1.0 |
+| python-dotenv | >=1.0, <2.0 |
+| jinja2 | >=3.1, <4.0 |
+| itsdangerous | >=2.1, <3.0 |
+
+---
+
+## 🚀 Instalação e Execução Local
+
+### Pré-requisitos
+
+- Python 3.10 ou superior instalado e no PATH
+- MySQL 8.0 ou superior **rodando** na máquina
+- Um usuário MySQL com permissão para criar databases (ex.: `root`)
+
+### Passo 1 — Configurar variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
+```
+DATABASE_URL=mysql+pymysql://USUARIO:SENHA@localhost:3306/trix
+SECRET_KEY=escolha-uma-chave-secreta-longa
+```
+
+> Se a senha tiver caracteres especiais, codifique-os na URL.
+> Exemplo: `PUC@1234` → `PUC%401234`
+
+> Nos notebooks da PUC, a linha fica: `DATABASE_URL=mysql+pymysql://root:PUC%401234@localhost:3306/trix`
+
+### Passo 2 — Criar e ativar ambiente virtual
+
+```bash
+python -m venv .venv
+```
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# Linux / macOS
+source .venv/bin/activate
+```
+
+### Passo 3 — Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### Passo 4 — Criar banco de dados e popular com dados iniciais
+
+```bash
+python seed.py
+```
+
+Isso cria o banco `trix`, todas as tabelas e insere os dados de demonstração.
+
+> A pasta `database/` contém os scripts SQL equivalentes — úteis para visualizar a estrutura no MySQL Workbench, mas não precisam ser executados manualmente.
+
+### Passo 5 — Iniciar o servidor
+
+```bash
+uvicorn main:app --reload --host 127.0.0.1 --port 8080
+```
+
+Acesse no navegador: **http://127.0.0.1:8080**
+
+---
+
+## 🔑 Credenciais Iniciais
+
+| Login | Senha | Perfil |
+|---|---|---|
+| `admin` | `admin123` | Administrador |
+| `dra.ana` | `ana123` | Médico |
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+/
+├── database/
+│   ├── setup_banco.sql   ← espelho: DROP/CREATE do banco trix
+│   ├── schemas.sql       ← espelho: estrutura das tabelas
+│   └── inserts.sql       ← espelho: dados iniciais
+├── static/               ← CSS, JS, imagens
+├── templates/            ← páginas HTML (Jinja2)
+├── .gitignore
+├── crud.py               ← operações de banco
+├── db.py                 ← conexão (engine/session)
+├── main.py               ← rotas do FastAPI
+├── models.py             ← mapeamento das tabelas (SQLAlchemy Mapper)
+├── paginas_html.py       ← renderizador Jinja2
+├── requirements.txt
+├── schemas.py            ← validações (Pydantic)
+└── seed.py               ← cria banco, tabelas e dados de demonstração
+```
 
 ---
 
 ## 👥 Equipe Desenvolvedora
 
-O projeto está sendo construído colaborativamente pelos seguintes estudantes de Ciência da Computação:
+O projeto foi construído colaborativamente pelos seguintes estudantes de Ciência da Computação:
 
 * 👨‍💻 **Adrian Arthur**
 * 👨‍💻 **Luan Orlovski**
@@ -47,6 +182,13 @@ O projeto está sendo construído colaborativamente pelos seguintes estudantes d
 * 👨‍💻 **Bruno Albach**
 
 ---
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
 <p align="center">
   <i>Projeto acadêmico - PUCPR | Ciência da Computação</i>
 </p>

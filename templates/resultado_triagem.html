@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% set titulo = "Resultado da Triagem - TriX" %}
+
+{% block conteudo %}
+<main class="container">
+  <div class="pagina-centrada">
+    <h1>Resultado da Triagem</h1>
+    <p>Resumo da avaliação recém registrada.</p>
+
+    <article>
+      <h2>{{ resultado.paciente }}</h2>
+      <p>Score calculado: <strong>{{ "%.2f"|format(resultado.score) }}</strong></p>
+      <p>Limiar aplicado: <strong>{{ "%.2f"|format(resultado.limiar) }}</strong></p>
+      <p>Conduta:
+        <strong>
+          {% if resultado.recomendada %}
+            recomendado ao teste genético confirmatório.
+          {% else %}
+            não recomendado ao teste genético confirmatório.
+          {% endif %}
+        </strong>
+      </p>
+    </article>
+
+    <div class="acoes-linha">
+      <a role="button" href="/relatorios">Ver relatórios</a>
+      <a role="button" class="botao-secundario" href="/triagem?copiar_de={{ resultado.id }}">Nova triagem</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

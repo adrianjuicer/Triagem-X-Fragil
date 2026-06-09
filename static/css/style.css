@@ -1,249 +1,77 @@
-/* =========================================
-   TRIX - ajustes visuais do protótipo Flask
-   ========================================= */
+html { font-size: 92%; }
 
 :root {
-  --trix-primaria: #3129d6;
-  --trix-primaria-escura: #2821ab;
-  --trix-destaque: #8779ec;
-  --trix-borda: #adadeb;
-  --trix-alerta: #b42318;
-  --trix-sucesso: #146c43;
-  --trix-fundo-suave: #f7f6ff;
+    --pico-primary:       #3157d5;
+    --pico-primary-hover: #263f9f;
 }
 
 body.login-admin {
-  --trix-primaria: #b42318;
-  --trix-primaria-escura: #8f1d14;
-  --trix-destaque: #c2410c;
-  --trix-borda: #f1a6a0;
-  --trix-alerta: #7f1d1d;
-  --trix-fundo-suave: #fff5f5;
+    --pico-primary:       #b42318;
+    --pico-primary-hover: #8f1d14;
+}
+body.login-admin button:not(.botao-link),
+body.login-admin [role="button"] {
+    background-color: #b42318;
+    border-color:     #b42318;
+}
+body.login-admin button:not(.botao-link):hover,
+body.login-admin [role="button"]:hover {
+    background-color: #8f1d14;
+    border-color:     #8f1d14;
 }
 
-button,
-[type="submit"],
-[type="button"],
-[role="button"] {
-  background-color: var(--trix-primaria);
-  border-color: var(--trix-primaria);
-  color: #ffffff;
-}
+/* -- Cabeçalho -- */
+.cabecalho-topo { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0 0.25rem; }
+.marca img      { max-width: 110px; }
+.usuario-logado { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.2; }
+.usuario-rotulo { font-size: 0.8rem; text-transform: uppercase; color: var(--pico-muted-color); }
+.usuario-nome   { font-size: 1.05rem; font-weight: 600; color: var(--pico-primary); }
+.usuario-sair   { font-size: 0.9rem; color: var(--pico-muted-color); text-decoration: none; }
+.usuario-sair:hover { color: var(--pico-primary); }
+.link-atual     { font-weight: bold; text-decoration: underline; }
 
-button:hover,
-[role="button"]:hover {
-  background-color: var(--trix-primaria-escura);
-  border-color: var(--trix-primaria-escura);
-}
+/* -- Login -- */
+.tela-login  { display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+.login-panel { width: 100%; max-width: 380px; }
+.logo-login  { display: block; max-width: 140px; margin: 0 auto 1.5rem; }
 
-.botao-secundario {
-  margin-left: 8px;
-  background-color: #5b5b72;
-  border-color: #5b5b72;
-}
+/* -- Formulários -- */
+.formulario-card               { max-width: 700px; margin: 0 auto; }
+.grid-formulario               { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; }
+.grid-formulario .campo-largo  { grid-column: 1 / -1; }
 
-.container-geral {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px 48px;
-}
+/* -- Painel de filtros -- */
+.painel-filtros { padding: 1.5rem; margin-bottom: 2rem; background: var(--pico-form-element-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: var(--pico-border-radius); }
+.grupo-filtros  { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; align-items: end; }
+.grupo-filtros label { margin: 0; }
+.barra-filtros  { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--pico-muted-border-color); }
 
-.cabecalho-principal {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  border-bottom: 2px solid var(--trix-borda);
-  padding: 15px 0;
-  margin-bottom: 30px;
-}
+/* -- Botões e ações -- */
+.acoes-linha                          { display: flex; gap: 1rem; }
+.acoes-linha button,
+.acoes-linha [role="button"]          { width: 160px; text-align: center; margin: 0; }
+.botao-secundario                     { background-color: var(--pico-secondary-background); border-color: var(--pico-secondary-border); }
+.botao-secundario:hover               { background-color: var(--pico-secondary-hover-background); border-color: var(--pico-secondary-hover-border); }
+.acoes-tabela                         { display: flex; flex-direction: column; gap: 0.5rem; }
+.botao-link                           { display: inline-block; background: transparent; border: none; color: var(--pico-primary); padding: 0; margin: 0; font-size: inherit; text-decoration: underline; box-shadow: none; white-space: nowrap; cursor: pointer; }
+.botao-link:hover                     { color: var(--pico-primary-hover); background: transparent; }
 
-.caixa-logo img {
-  display: block;
-}
+/* -- Mensagens -- */
+.aviso         { padding: 0.75rem 1rem; border-radius: var(--pico-border-radius); margin-bottom: 1rem; }
+.aviso-sucesso { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.aviso-erro    { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
 
-.caixa-menu ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
+/* -- Badges -- */
+.badge         { display: inline-block; padding: 0.2em 0.6em; border-radius: 999px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.badge-sucesso { background: #d1fae5; color: #065f46; }
+.badge-neutro  { background: #f3f4f6; color: #374151; }
 
-.caixa-menu li {
-  list-style: none;
-}
+/* -- Menu -- */
+.menu-cards      { max-width: 700px; margin: 0 auto; }
+.pagina-centrada { max-width: 860px; margin: 0 auto; }
+.intro           { text-align: center; margin-bottom: 1.5rem; }
 
-.caixa-menu a {
-  color: var(--trix-destaque);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.link-atual {
-  color: var(--trix-primaria) !important;
-  text-decoration: underline !important;
-}
-
-.centralizar-texto {
-  text-align: center;
-}
-
-.tela-login {
-  padding-top: 80px;
-}
-
-.meu-formulario {
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.texto-destaque {
-  color: var(--trix-destaque);
-  margin-bottom: 30px;
-}
-
-.texto-vermelho {
-  color: var(--trix-alerta);
-  font-weight: bold;
-}
-
-.texto-sucesso {
-  color: var(--trix-sucesso);
-  font-weight: bold;
-}
-
-.botao-espacado,
-.espaco-superior {
-  margin-top: 20px;
-}
-
-.grade-acoes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.tabela-responsiva {
-  overflow-x: auto;
-  margin-top: 30px;
-}
-
-article,
-.meu-formulario {
-  box-shadow: none;
-}
-
-article {
-  border: 1px solid var(--trix-borda);
-  border-radius: 8px;
-}
-
-.painel-filtros {
-  border-top: 1px solid var(--trix-borda);
-  border-bottom: 1px solid var(--trix-borda);
-  margin-top: 28px;
-  padding: 18px 0;
-}
-
-.grupo-filtros {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(130px, 1fr));
-  gap: 14px;
-  align-items: end;
-}
-
-.grupo-filtros label {
-  margin-bottom: 0;
-}
-
-.grupo-filtros input,
-.grupo-filtros select {
-  min-height: 44px;
-}
-
-.barra-filtros {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.contador-resultados {
-  margin: 0;
-  color: #45455c;
-  font-weight: bold;
-}
-
-.linha-avaliacao[hidden],
-#linha_sem_resultados[hidden] {
-  display: none;
-}
-
-.lista-sintomas label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.lista-sintomas-tabela {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.lista-sintomas-tabela li {
-  margin-bottom: 4px;
-}
-
-.formulario-inline {
-  display: inline;
-}
-
-.botao-link {
-  display: inline;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--trix-primaria);
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.botao-link:hover {
-  background: transparent;
-  color: var(--trix-primaria-escura);
-}
-
-@media (max-width: 720px) {
-  .cabecalho-principal {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .caixa-menu ul,
-  .grade-acoes,
-  .grupo-filtros {
-    grid-template-columns: 1fr;
-  }
-
-  .caixa-menu ul {
-    gap: 10px;
-  }
-
-  .barra-filtros {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .botao-secundario {
-    margin-left: 0;
-  }
-}
+/* -- Misc -- */
+.lista-sintomas       { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.lista-sintomas label { margin: 0; }
+table[role="grid"] th { white-space: nowrap; }

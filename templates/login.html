@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set titulo = "Login - TriX" %}
+
+{% block conteudo %}
+<main class="tela-login">
+  <article class="login-panel">
+    <img class="logo-login" src="/static/img/logo-trix.png" alt="TriX">
+    <h1>Acesso ao TriX</h1>
+
+    {% if erro %}
+      {% set texto = erro %}
+      {% set sucesso = false %}
+      {% include "_mensagem.html" %}
+    {% endif %}
+
+    <form action="/login" method="post">
+      <label for="login">Usuário
+        <input type="text" id="login" name="login" required
+               placeholder="Ex: admin ou dra.ana" autocomplete="username">
+      </label>
+      <label for="senha">Senha
+        <input type="password" id="senha" name="senha" required
+               placeholder="********" autocomplete="current-password">
+      </label>
+      <button type="submit">Entrar</button>
+    </form>
+  </article>
+</main>
+{% endblock %}

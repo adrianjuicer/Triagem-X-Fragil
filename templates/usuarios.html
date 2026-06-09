@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% set titulo = "Usuários Cadastrados - TriX" %}
+
+{% block conteudo %}
+<main class="container">
+  <hgroup class="intro">
+    <h1>Usuários Cadastrados</h1>
+    <p>Usuários com acesso ao sistema.</p>
+  </hgroup>
+
+  <figure>
+    <table role="grid">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Login</th>
+          <th>Nome</th>
+          <th>Perfil</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usuario in usuarios %}
+          <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.login }}</td>
+            <td>{{ usuario.nome_completo }}</td>
+            <td>{{ nome_perfil(usuario.perfil) }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4">Nenhum usuário cadastrado.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </figure>
+</main>
+{% endblock %}

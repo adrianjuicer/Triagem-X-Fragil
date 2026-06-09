@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% set titulo = "Relatórios Administrativos - TriX" %}
+
+{% block conteudo %}
+<main class="container">
+  <hgroup class="intro">
+    <h1>Relatórios Administrativos</h1>
+    <p>Acesso completo a todos os atendimentos da clínica.</p>
+  </hgroup>
+
+  {% if aviso %}
+    {% set texto = aviso %}
+    {% set sucesso = true %}
+    {% include "_mensagem.html" %}
+  {% endif %}
+
+  <section class="painel-filtros">
+    <form method="get" action="/relatorios_admin">
+      <div class="grupo-filtros">
+        <label>CPF ou nome do paciente
+          <input type="text" name="f_paciente" value="{{ filtros.paciente }}" placeholder="CPF ou nome">
+        </label>
+        <label>Data inicial
+          <input type="date" lang="pt-BR" name="f_data_inicio" value="{{ filtros.data_inicio }}">
+        </label>
+        <label>Data final
+          <input type="date" lang="pt-BR" name="f_data_fim" value="{{ filtros.data_fim }}">
+        </label>
+        <label>Score mínimo
+          <input type="text" name="f_score_min" inputmode="decimal" maxlength="4"
+                 pattern="^([01](\.\d{1,2})?|2(\.0{1,2})?)$"
+                 placeholder="0.00" value="{{ filtros.score_min }}">
+        </label>
+        <label>Score máximo
+          <input type="text" name="f_score_max" inputmode="decimal" maxlength="4"
+                 pattern="^([01](\.\d{1,2})?|2(\.0{1,2})?)$"
+                 placeholder="2.00" value="{{ filtros.score_max }}">
+        </label>
+        <label>Sexo
+          <select name="f_sexo">
+            <option value=""{% if not filtros.sexo %} selected{% endif %}>Todos</option>
+            <option value="M"{% if filtros.sexo == "M" %} selected{% endif %}>Masculino</option>
+            <option value="F"{% if filtros.sexo == "F" %} selected{% endif %}>Feminino</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="barra-filtros">
+        <small>{{ avaliacoes|length }} resultado(s)</small>
+        <div class="acoes-linha">
+          <button type="submit">Filtrar</button>
+          <a role="button" class="botao-secundario" href="/relatorios_admin">Limpar</a>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <figure>
+    <table role="grid">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>CPF</th>
+          <th>Paciente</th>
+          <th>Sexo</th>
+          <th>Profissional de Saúde</th>
+          <th>Sintomas</th>
+          <th>Score</th>
+          <th>Recomendação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for av in avaliacoes %}
+          <tr>
+            <td>{{ av.data }}</td>
+            <td>{{ av.cpf }}</td>
+            <td>{{ av.paciente }}</td>
+            <td>{{ av.sexo }}</td>
+            <td>{{ av.usuario }}</td>
+            <td>
+              <ul>
+                {% for sintoma in av.sintomas %}<li>{{ sintoma }}</li>{% endfor %}
+              </ul>
+            </td>
+            <td>{{ "%.2f"|format(av.score) }}</td>
+            <td>
+              {% if av.recomendada %}
+                <span class="badge badge-sucesso">Recomendado</span>
+              {% else %}
+                <span class="badge badge-neutro">Não recomendado</span>
+              {% endif %}
+            </td>
+            <td>
+              <div class="acoes-tabela">
+                <a class="botao-link" href="/pacientes/{{ av.paciente_id }}">Histórico</a>
+              </div>
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="9">Nenhuma avaliação encontrada.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </figure>
+</main>
+{% endblock %}
