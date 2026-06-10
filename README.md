@@ -94,9 +94,7 @@ SECRET_KEY=escolha-uma-chave-secreta-longa
 ```
 
 > Se a senha tiver caracteres especiais, codifique-os na URL.
-> Exemplo: `PUC@1234` → `PUC%401234`
-
-> Nos notebooks da PUC, a linha fica: `DATABASE_URL=mysql+pymysql://root:PUC%401234@localhost:3306/trix`
+> Exemplo: `exemplo@1234` → `exemplo%401234`
 
 ### Passo 2 — Criar e ativar ambiente virtual
 
