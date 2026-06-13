@@ -129,11 +129,8 @@ class TriagemCreate(BaseModel):
 
     @field_validator("email")
     @classmethod
-    def validar_email_paciente(cls, v: Optional[str]) -> str:
-        resultado = _validar_email(v)
-        if resultado is None:
-            raise ValueError("E-mail é obrigatório.")
-        return resultado
+    def validar_email_paciente(cls, v: Optional[str]) -> Optional[str]:
+        return _validar_email(v)
 
     @field_validator("usuario_responsavel")
     @classmethod
