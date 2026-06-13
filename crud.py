@@ -149,7 +149,7 @@ def listar_avaliacoes(
                     query = query.filter(models.Paciente.nome.ilike(f"%{nome_busca}%"))
     else:
         cpf_limpo = _so_digitos(cpf) if cpf else ""
-        # Busca por CPF completo (11 dígitos) mostra histórico de toda a clínica (handoff).
+        # Busca por CPF completo (11 dígitos) mostra histórico completo do paciente na clínica.
         # Sem CPF completo, mostra apenas os atendimentos do próprio médico.
         if len(cpf_limpo) != 11:
             query = query.filter(models.Avaliacao.id_usuario == id_usuario)
