@@ -22,8 +22,8 @@ Este projeto foi idealizado e desenvolvido como parte integrante da disciplina d
 
 | | Link |
 |---|---|
-| Tutorial da plataforma | [assistir no YouTube](https://www.youtube.com/watch?v=LINK_TUTORIAL) |
-| Implantação do sistema | [assistir no YouTube](https://www.youtube.com/watch?v=LINK_IMPLANTACAO) |
+| Tutorial da plataforma | [assistir no YouTube]([https://www.youtube.com/watch?v=LINK_TUTORIAL](https://www.youtube.com/watch?v=119yNk3yvfo)) |
+| Implantação do sistema | [assistir no YouTube]([https://www.youtube.com/watch?v=LINK_IMPLANTACAO](https://www.youtube.com/watch?v=O5Z-wrt7Q64)) |
 
 ---
 
