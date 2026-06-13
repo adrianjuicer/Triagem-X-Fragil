@@ -116,15 +116,15 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Passo 4 — Criar banco de dados e popular com dados iniciais
+### Passo 4 — Criar e popular o banco de dados
 
-```bash
-python seed.py
-```
+Abra o **MySQL Workbench** (ou outro cliente MySQL) e execute os scripts da pasta `database/` **nesta ordem**:
 
-Isso cria o banco `trix`, todas as tabelas e insere os dados de demonstração.
+1. `setup_banco.sql`: cria o banco `trix` do zero.
+2. `schemas.sql`: cria todas as tabelas.
+3. `inserts.sql`: insere os dados de demonstração.
 
-> A pasta `database/` contém os scripts SQL equivalentes — úteis para visualizar a estrutura no MySQL Workbench, mas não precisam ser executados manualmente.
+Ao final, o banco `trix` estará criado, com as tabelas e os dados iniciais prontos para uso.
 
 ### Passo 5 — Iniciar o servidor
 
@@ -145,25 +145,33 @@ Acesse no navegador: **http://127.0.0.1:8080**
 
 ---
 
+## 📚 Documentação
+
+A modelagem do banco de dados, com os modelos conceitual, lógico e físico, está descrita em [documentacao.md](documentacao.md).
+
+---
+
 ## 📁 Estrutura do Projeto
 
 ```
 /
 ├── database/
-│   ├── setup_banco.sql   ← espelho: DROP/CREATE do banco trix
-│   ├── schemas.sql       ← espelho: estrutura das tabelas
-│   └── inserts.sql       ← espelho: dados iniciais
+│   ├── setup_banco.sql   ← cria o banco trix (DROP/CREATE)
+│   ├── schemas.sql       ← estrutura das tabelas (modelo físico)
+│   └── inserts.sql       ← dados iniciais de demonstração
+├── docs/                 ← diagramas do banco (conceitual e lógico)
 ├── static/               ← CSS, JS, imagens
 ├── templates/            ← páginas HTML (Jinja2)
 ├── .gitignore
 ├── crud.py               ← operações de banco
 ├── db.py                 ← conexão (engine/session)
+├── documentacao.md       ← modelagem do banco (conceitual, lógico, físico)
 ├── main.py               ← rotas do FastAPI
 ├── models.py             ← mapeamento das tabelas (SQLAlchemy Mapper)
 ├── paginas_html.py       ← renderizador Jinja2
+├── README.md
 ├── requirements.txt
-├── schemas.py            ← validações (Pydantic)
-└── seed.py               ← cria banco, tabelas e dados de demonstração
+└── schemas.py            ← validações (Pydantic)
 ```
 
 ---
