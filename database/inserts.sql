@@ -27,19 +27,19 @@ INSERT INTO usuario (id, login, nome_completo, email, senha, perfil) VALUES
 -- -------------------------------------------------------
 -- CARGA DE PACIENTES
 -- -------------------------------------------------------
-INSERT INTO paciente (id, nome, cpf, email, telefone, telefone_responsavel, data_nascimento, sexo) VALUES
-(1, 'Lucas Pereira Martins', '90000000001', 'lucas.pereira@example.com', '11994001001', '11985001001', '2015-03-12', 'M'),
-(2, 'Sofia Almeida Costa', '90000000002', 'sofia.almeida@example.com', '21994001002', '21985001002', '2016-07-28', 'F'),
-(3, 'Miguel Santos Oliveira', '90000000003', NULL, '31994001003', '31985001003', '2014-11-05', 'M'),
-(4, 'Laura Ribeiro Ferreira', '90000000004', 'laura.ribeiro@example.com', '41994001004', NULL, '2017-02-19', 'F'),
-(5, 'Enzo Carvalho Lima', '90000000005', NULL, '51994001005', '51985001005', '2018-09-03', 'M'),
-(6, 'Valentina Costa Rocha', '90000000006', 'valentina.costa@example.com', NULL, '61985001006', '2019-12-14', 'F'),
-(7, 'Pedro Henrique Nascimento', '90000000007', 'pedro.nascimento@example.com', '71994001007', '71985001007', '2013-05-21', 'M'),
-(8, 'Isabela Monteiro Araujo', '90000000008', NULL, '81994001008', '81985001008', '2016-01-30', 'F'),
-(9, 'Rafael Barbosa Cardoso', '90000000009', 'rafael.cardoso@example.com', '11994001009', NULL, '2012-10-08', 'M'),
-(10, 'Helena Martins Duarte', '90000000010', 'helena.duarte@example.com', '21994001010', '21985001010', '2018-04-17', 'F'),
-(11, 'Davi Ribeiro Gomes', '90000000011', NULL, '31994001011', '31985001011', '2015-08-26', 'M'),
-(12, 'Manuela Fernandes Lopes', '90000000012', 'manuela.lopes@example.com', NULL, '41985001012', '2017-06-09', 'F');
+INSERT INTO paciente (id, nome, cpf, email, telefone, telefone_responsavel, usuario_responsavel, data_nascimento, sexo) VALUES
+(1, 'Lucas Pereira Martins', '90000000001', 'lucas.pereira@example.com', '11994001001', '11985001001', 'Renata Pereira Martins', '2015-03-12', 'M'),
+(2, 'Sofia Almeida Costa', '90000000002', 'sofia.almeida@example.com', '21994001002', '21985001002', 'Carla Almeida Costa', '2016-07-28', 'F'),
+(3, 'Miguel Santos Oliveira', '90000000003', NULL, '31994001003', '31985001003', 'Paulo Santos Oliveira', '2014-11-05', 'M'),
+(4, 'Laura Ribeiro Ferreira', '90000000004', 'laura.ribeiro@example.com', '41994001004', '41985001004', 'Sandra Ribeiro Ferreira', '2017-02-19', 'F'),
+(5, 'Enzo Carvalho Lima', '90000000005', NULL, '51994001005', '51985001005', 'Roberto Carvalho Lima', '2018-09-03', 'M'),
+(6, 'Valentina Costa Rocha', '90000000006', 'valentina.costa@example.com', NULL, '61985001006', 'Juliana Costa Rocha', '2019-12-14', 'F'),
+(7, 'Pedro Henrique Nascimento', '90000000007', 'pedro.nascimento@example.com', '71994001007', '71985001007', 'Aline Henrique Nascimento', '2013-05-21', 'M'),
+(8, 'Isabela Monteiro Araujo', '90000000008', NULL, '81994001008', '81985001008', 'Fernando Monteiro Araujo', '2016-01-30', 'F'),
+(9, 'Rafael Barbosa Cardoso', '90000000009', 'rafael.cardoso@example.com', '11994001009', '11985001009', 'Patricia Barbosa Cardoso', '2012-10-08', 'M'),
+(10, 'Helena Martins Duarte', '90000000010', 'helena.duarte@example.com', '21994001010', '21985001010', 'Eduardo Martins Duarte', '2018-04-17', 'F'),
+(11, 'Davi Ribeiro Gomes', '90000000011', NULL, '31994001011', '31985001011', 'Camila Ribeiro Gomes', '2015-08-26', 'M'),
+(12, 'Manuela Fernandes Lopes', '90000000012', 'manuela.lopes@example.com', '41994001012', '41985001012', 'Ricardo Fernandes Lopes', '2017-06-09', 'F');
 
 -- -------------------------------------------------------
 -- CARGA DE SINTOMAS
@@ -60,14 +60,14 @@ INSERT INTO sintoma (id, descricao, peso_m, peso_f) VALUES
 
 -- -------------------------------------------------------
 -- CARGA DE AVALIAÇÕES
--- Valores de score e recomendação calculados com base no sexo e limiar >= 0.5000
+-- Limiares aplicados: masculino >= 0.56 | feminino >= 0.55
 -- -------------------------------------------------------
 INSERT INTO avaliacao (id, id_usuario, id_paciente, data_avaliacao, score_calculado, recomendacao, observacoes) VALUES
 (1, 3, 1, '2026-01-15 09:10:00', 1.2400, 1, 'Responsável relata atraso importante na fala e dificuldade de interação social.'),
 (2, 4, 1, '2026-04-10 14:30:00', 1.4300, 1, 'Reavaliação com manutenção de sinais físicos e comportamentais relevantes.'),
 (3, 4, 2, '2026-01-20 10:40:00', 0.1600, 0, 'Queixa inicial de desatenção em ambiente escolar, sem outros sinais marcantes.'),
 (4, 4, 2, '2026-05-02 08:50:00', 0.6000, 1, 'Escola relata piora de aprendizagem e necessidade de apoio pedagógico frequente.'),
-(5, 5, 3, '2026-02-05 15:20:00', 0.5300, 1, 'Acompanhamento inicial por dificuldade de aprendizagem e inquietação.'),
+(5, 5, 3, '2026-02-05 15:20:00', 0.5300, 0, 'Acompanhamento inicial por dificuldade de aprendizagem e inquietação.'),
 (6, 3, 3, '2026-05-06 11:00:00', 0.7200, 1, 'Segunda opinião clínica com sinais adicionais observados durante consulta.'),
 (7, 6, 4, '2026-02-11 09:35:00', 0.5600, 1, 'Responsável informa atraso escolar e comportamento social reservado.'),
 (8, 6, 4, '2026-04-18 13:45:00', 0.6500, 1, 'Reavaliação confirma persistência dos sinais e orienta investigação complementar.'),
@@ -90,7 +90,7 @@ INSERT INTO avaliacao (id, id_usuario, id_paciente, data_avaliacao, score_calcul
 
 -- -------------------------------------------------------
 -- RELACIONAMENTO N:M (avaliacao_sintomas)
--- Mimetiza a lógica do Python: insere todos como FALSE e ativa os presentes
+-- Mesma lógica do Python: insere todos como ausente (0) e marca os presentes como (1)
 -- -------------------------------------------------------
 
 -- 1. Cria a matriz base ligando todas as 24 avaliações a todos os 12 sintomas como não marcados (0)

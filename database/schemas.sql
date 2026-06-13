@@ -41,11 +41,10 @@ CREATE TABLE paciente (
 
 -- -------------------------------------------------------
 -- TABELA: sintoma
--- Apenas descricao + pesos. nome_sintoma removido.
 -- -------------------------------------------------------
 CREATE TABLE sintoma (
   id             INT PRIMARY KEY AUTO_INCREMENT,
-  descricao      VARCHAR(255) NOT NULL,
+  descricao      VARCHAR(255) NOT NULL UNIQUE,
   peso_m         DECIMAL(7,4) NOT NULL,
   peso_f         DECIMAL(7,4)
 );
@@ -54,8 +53,6 @@ CREATE TABLE sintoma (
 -- TABELA: avaliacao
 -- Guarda o resultado clínico por paciente/usuario/data.
 -- id_usuario e id_paciente possuem FOREIGN KEY fisica.
--- classificacao_recomendacao REMOVIDA — gerar no template:
---   {% if avaliacao.recomendacao %}Recomendado{% else %}Não recomendado{% endif %}
 -- -------------------------------------------------------
 CREATE TABLE avaliacao (
   id                INT PRIMARY KEY AUTO_INCREMENT,
@@ -105,8 +102,7 @@ CREATE TABLE avaliacao_sintomas (
 );
 
 -- -------------------------------------------------------
--- SEED: sintomas (12 sintomas do checklist clínico)
--- Pesos derivados do artigo do Dr. Roberto Hirochi Herai.
+-- SEED: 12 sintomas do checklist clínico com seus pesos
 -- -------------------------------------------------------
 INSERT INTO sintoma (descricao, peso_m, peso_f) VALUES
   ('Atraso na fala',                                               0.1400, 0.0100),
@@ -122,9 +118,3 @@ INSERT INTO sintoma (descricao, peso_m, peso_f) VALUES
   ('Macroorquidismo',                                              0.2600, NULL),
   ('Rosto alongado, mandíbula proeminente e/ou orelhas de abano',  0.2900, 0.0900);
 
--- -------------------------------------------------------
--- SEED: usuario administrador padrão para primeiro acesso
--- Troque a senha antes de colocar em uso.
--- -------------------------------------------------------
--- INSERT INTO usuario (login, senha, perfil) VALUES ---
--- ('admin', 'trocar_antes_de_usar', 'administrador') ---
