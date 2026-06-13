@@ -16,8 +16,7 @@ if not DATABASE_URL:
     DB_NAME = os.getenv("DB_NAME", "trix")
     DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-# Garante que a conexao use utf8mb4 (acentos e caracteres especiais). Sem isso,
-# o pymysql pode cair em latin1 e corromper a leitura/escrita de acentuacao.
+# Garante que a conexao use utf8mb4 (acentos e caracteres especiais).
 if "charset=" not in DATABASE_URL:
     DATABASE_URL += ("&" if "?" in DATABASE_URL else "?") + "charset=utf8mb4"
 
