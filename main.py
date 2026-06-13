@@ -29,7 +29,7 @@ try:
 except OperationalError as e:
     import sys
     print("\nERRO: não foi possível conectar ao banco de dados.")
-    print("Verifique se o MySQL está rodando e se já rodou o iniciar_trix.py.")
+    print("Verifique se o MySQL está rodando e se o seed.py já foi executado.")
     print(f"Detalhe técnico: {e.orig}\n")
     sys.exit(1)
 
