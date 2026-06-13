@@ -29,7 +29,7 @@ try:
 except OperationalError as e:
     import sys
     print("\nERRO: não foi possível conectar ao banco de dados.")
-    print("Verifique se o MySQL está rodando e se o seed.py já foi executado.")
+    print("Verifique se o MySQL está rodando e se os scripts do banco (database/) já foram executados.")
     print(f"Detalhe técnico: {e.orig}\n")
     sys.exit(1)
 
